@@ -14,12 +14,12 @@ const connectDB    = require("./db");
 
 // Route imports
 const authRoutes    = require("./auth");
-const profileRoutes = require("./routes/profiles");
-const reviewRoutes  = require("./routes/reviews");
-const reportRoutes  = require("./routes/reports");
-const uploadRoutes  = require("./routes/upload");
-const adminRoutes   = require("./routes/admin");
-const publicRoutes  = require("./routes/public");
+const profileRoutes = require("./profiles");
+const reviewRoutes  = require("./reviews");
+const reportRoutes  = require("./reports");
+const uploadRoutes  = require("./upload");
+const adminRoutes   = require("./admin");
+const publicRoutes  = require("./public");
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
