@@ -10,7 +10,7 @@ const helmet       = require("helmet");
 const rateLimit    = require("express-rate-limit");
 const morgan       = require("morgan");
 const path         = require("path");
-const connectDB    = require("./config/db");
+const connectDB    = require("./db");
 
 // Route imports
 const authRoutes    = require("./routes/auth");
