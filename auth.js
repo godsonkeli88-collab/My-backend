@@ -1,7 +1,6 @@
 // src/routes/auth.js
 const express = require("express");
 const jwt     = require("jsonwebtoken");
-const User    = require("./User");
 const { auth } = require("./auth");
 
 const router = express.Router();
@@ -154,19 +153,20 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
-// ── POST /api/auth/resend-otp ─────────────────────────────
-router.post("/resend-otp", auth, async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select("+otpCode +otpExpiry");
-    const otpCode  = String(Math.floor(100000 + Math.random() * 900000));
-    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000);
-    user.otpCode  = otpCode;
-    user.otpExpiry = otpExpiry;
-    await user.save();
-    // TODO: send via SMS
-    res.json({ message: "OTP resent", otpCode: process.env.NODE_ENV !== "production" ? otpCode : undefined });
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password required" });
+    }
+
+    return res.status(200).json({
+      message: "Login route is working (no database connected yet)"
+    });
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: "Server error" });
   }
 });
 
