@@ -13,7 +13,7 @@ const path         = require("path");
 const connectDB    = require("./db");
 
 // Route imports
-const authRoutes    = require("./routes/auth");
+const authRoutes    = require("./auth");
 const profileRoutes = require("./routes/profiles");
 const reviewRoutes  = require("./routes/reviews");
 const reportRoutes  = require("./routes/reports");
